@@ -1,16 +1,8 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  background: black;
+  width: 100%;
+  padding-bottom: 100px;
 }
 
 .App-header {
@@ -28,11 +20,128 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* NOT AUTOMATIC */
+
+html {
+  font-size: 62.5%;
+  background-color: black;
 }
+
+.wrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: white;
+  text-transform: uppercase;
+  font-size: 5rem;
+  padding: 30px;
+  border-top: pink 5px solid;
+  border-right: coral 5px solid;
+  border-bottom: lightskyblue 5px solid;
+  border-left: lightgreen 5px solid;
+  /* background: -webkit-linear-gradient(#ffccf2, #ff3399, #800060, #d24dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+h2 {
+  text-transform: capitalize;
+  color: white;
+  font-family: Rajdhani;
+}
+
+.searchBar {
+  width: 100%;
+}
+
+form {
+  margin: 30px;
+  border: red 3px solid;
+  display: flex;
+}
+
+input {
+  width: 80%;
+  font-size: 2rem;
+}
+
+button {
+  width: 20%;
+  font-size: 1.5rem;
+  background-color: black;
+  color: white;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: red solid 1px;
+}
+
+button:hover,
+button:focus {
+  background-color: red;
+}
+
+i {
+  color: white;
+}
+
+.gifContainer {
+  flex-wrap: wrap;
+  border-left: yellow 5px solid;
+  border-top: orange 5px solid;
+  border-right: #FF8C00 5px solid;
+  border-bottom: orange 5px solid;
+  display: flex; 
+  justify-content: space-evenly;
+}
+
+.gif {
+  border: white 5px solid;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 360px;
+  height: 400px;
+  margin: 20px 0;
+  /* box-shadow: 8px 8px 0 purple; */
+}
+
+.gif:hover,
+.gif:focus {
+  opacity: 10%;
+}
+
+h2 {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+h2:hover,
+h2:focus {
+  /* z-index: 1; */
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.clearButton {
+  margin-top: 30px;
+}
+
+.clear {
+  color: white;
+  width: 100%;
+  font-size: 3rem;
+  border: red solid 5px;
+}
+
+
+/* FONTS */
+
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500&display=swap");
