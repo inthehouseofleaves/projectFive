@@ -36,7 +36,7 @@ html {
 h1 {
   color: white;
   text-transform: uppercase;
-  font-size: 5rem;
+  font-size: 8rem;
   padding: 30px;
   border-top: pink 5px solid;
   border-right: coral 5px solid;
@@ -51,6 +51,7 @@ h2 {
   text-transform: capitalize;
   color: white;
   font-family: Rajdhani;
+  font-size: 5rem;
 }
 
 .searchBar {
@@ -117,13 +118,13 @@ h2 {
   background: transparent;
   display: flex;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
-h2:hover,
+/* h2:hover,
 h2:focus {
-  /* z-index: 1; */
-}
+  z-index: 1;
+} */
 
 img {
   width: 100%;
@@ -139,6 +140,25 @@ img {
   width: 100%;
   font-size: 3rem;
   border: red solid 5px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: -200px;
+  border-top: solid 1px white;
+}
+
+a, i, ul {
+  text-decoration: none;
+  font-size: 3rem;
+  color: white;
+  text-transform: lowercase;
+}
+
+a:hover,
+a:focus {
+  color: orange;
 }
 
 
