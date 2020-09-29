@@ -44,9 +44,9 @@ class App extends Component {
     axios({
       url: "https://api.giphy.com/v1/gifs/search",
       method: "GET",
-      dataResponse: "json",
+      responseType: "json",
       params: {
-        q: "cats", // {query}
+        q: "cats",
         api_key: "4aF1GacjvE51Uj4zvZN9CCLvBmHIO0Vy",
         limit: 6,
         lang: "en"
@@ -60,16 +60,34 @@ class App extends Component {
     });
   }
 
-  // GRAB QUERY STRING AND LINK TO SUBMIT QUERY
+  getGif = () => {
+    console.log(this.state.userInput);
+    axios({
+      url: "https://api.giphy.com/v1/gifs/search",
+      method: "GET",
+      responseType: "json",
+      params: {
+        q: this.state.userInput,
+        api_key: "4aF1GacjvE51Uj4zvZN9CCLvBmHIO0Vy",
+        limit: 6,
+        lang: "en"
+      },
+    }).then((results) => {
+      results = results.data.data;
+      console.log(results)
+      this.setState({
+        gifsArray: results,
+      })
+    });
+  }
+
+  // GRAB QUERY STRING
 
   queryString = (event) => {
-    this.state = {
-      userInput: event.target.value, // this.state.userInput
-    }
+    this.setState({
+      userInput: event.target.value,
+    })
     console.log(this.state.userInput);
-
-    const sayWord = this.state.userInput;
-    console.log("word up", sayWord);
   }
 
 
@@ -77,15 +95,24 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const userInput = this.state.userInput;
-    console.log(userInput); // value of what you're typing in
-    return userInput;
+    // const userInput = this.state.userInput;
+    // console.log("user input:", userInput);
+    this.getGif();
   }
 
+  // CLEAR INPUT
 
-  // ON HOVER, DISPLAY TITLE
+  clearQuery = (event) => {
+    event.preventDefault();
+    console.log("clicking")
+  }
 
-  handleClickClear = (event) => {
+  // PUSHING TO PARAM: Q
+  
+
+  // ON HOVER, DISPLAY TITLE (TBD)
+
+  handleClickClear = () => {
     console.log("yo what it do my g")
     this.setState({
       gifsArray: [],
@@ -99,24 +126,21 @@ class App extends Component {
       <div className="App">
         <div className="wrapper">
           <h1>Giphy Generator</h1>
-
-          {/* SEARCH/SUBMIT*/}
-          {/* <Search /> */}
+          {/* SEARCH BAR */}
           <div className="SearchBar">
             <form action="submit" className="submit">
               <label sr-only="search" htmlFor="search"></label>
               <input onChange={this.queryString} value={this.state.userInput} type="text" className="search" placeholder="i.e. Cats" />
               <button onClick={this.handleSubmit} sr-only="submit" className="submit">Submit</button>
             </form>
-
           </div>
           {/* GIF CONTAINER */}
           <div className="gifContainer">
-            {this.state.gifsArray.map((gifs, index) => {
+            {this.state.gifsArray.map((gifs) => {
               return (
                 <div className="gif">
                   <h2>{gifs.title}</h2>
-                  <img key={index} src={gifs.images.fixed_height.url} alt={gifs.title} />
+                  <img key={gifs.id} src={gifs.images.fixed_height.url} alt={gifs.title} />
                 </div>
               );
             })}
