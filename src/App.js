@@ -11,7 +11,6 @@ class App extends Component {
     this.state = {
       gifsArray: [],
       userInput: "",
-      gifLink: "",
     };
   }
 
@@ -70,11 +69,6 @@ class App extends Component {
     })
   }
 
-  // ON GIF CLICK, SEND LINK
-  handleHover = (event) => {
-    event.preventDefault();
-  }
-
   // CLEAR SEARCH
   handleClickClear = () => {
     this.setState({
@@ -89,7 +83,7 @@ class App extends Component {
         <div className="wrapper">
           <h1>Giphy Generator</h1>
           {/* SEARCH BAR */}
-          <div className="SearchBar">
+          <div className="searchBar">
             <form action="submit" className="submit">
               <label sr-only="search" htmlFor="search"></label>
               <input onChange={this.queryString} value={this.state.userInput} type="text" className="search" placeholder="i.e. Cats" />
