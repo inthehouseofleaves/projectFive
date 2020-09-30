@@ -1,6 +1,6 @@
 {
   "homepage": "https://inthehouseofleaves.github.io/sarahDuongProjectFive",
-  "name": "my-app",
+  "name": "giphy-generator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
