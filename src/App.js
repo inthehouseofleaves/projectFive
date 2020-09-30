@@ -1,32 +1,7 @@
 
 import React, {Component} from 'react';
 import axios from "axios";
-// import Search from "./Search.js";
 import './App.css';
-
-// PSEUDOCODE
-
-// Make sure axios is working
-// Make functioning search bar that will submit user query and grab data from Giphy API
-// Create clear button that will clear the array
-
-// STRETCH GOALS
-
-// Make a button that will load more gifs onto the screen
-// OR make an endless scroll
-// Make title of GIF appear on gif:hover
-// Make it not look so shitty
-
-// PSEUDOCODE
-
-// Create constructor() with empty gifsArray and query string
-// Download and make axios/AJAX call
-// Store data into gifsArray
-// Grab user input and link this data to submit button
-// Display gifs on page
-// Create clear button
-
-
 
 class App extends Component {
 
@@ -36,6 +11,7 @@ class App extends Component {
     this.state = {
       gifsArray: [],
       userInput: "",
+      gifLink: "",
     };
   }
 
@@ -48,7 +24,7 @@ class App extends Component {
       params: {
         q: "cats",
         api_key: "4aF1GacjvE51Uj4zvZN9CCLvBmHIO0Vy",
-        limit: 6,
+        limit: 18,
         lang: "en"
       },
     }).then((results) => {
@@ -56,12 +32,10 @@ class App extends Component {
       this.setState({
         gifsArray: results,
       })
-      console.log(results)
     });
   }
 
   getGif = () => {
-    console.log(this.state.userInput);
     axios({
       url: "https://api.giphy.com/v1/gifs/search",
       method: "GET",
@@ -69,12 +43,11 @@ class App extends Component {
       params: {
         q: this.state.userInput,
         api_key: "4aF1GacjvE51Uj4zvZN9CCLvBmHIO0Vy",
-        limit: 6,
+        limit: 18,
         lang: "en"
       },
     }).then((results) => {
       results = results.data.data;
-      console.log(results)
       this.setState({
         gifsArray: results,
       })
@@ -82,43 +55,32 @@ class App extends Component {
   }
 
   // GRAB QUERY STRING
-
   queryString = (event) => {
     this.setState({
       userInput: event.target.value,
     })
-    console.log(this.state.userInput);
   }
-
 
   // ON SUBMIT, SUBMIT QUERY STRING
-
   handleSubmit = (event) => {
     event.preventDefault();
-    // const userInput = this.state.userInput;
-    // console.log("user input:", userInput);
     this.getGif();
+    this.setState({
+      userInput: "",
+    })
   }
 
-  // CLEAR INPUT
-
-  clearQuery = (event) => {
+  // ON GIF CLICK, SEND LINK
+  handleHover = (event) => {
     event.preventDefault();
-    console.log("clicking")
   }
 
-  // PUSHING TO PARAM: Q
-  
-
-  // ON HOVER, DISPLAY TITLE (TBD)
-
+  // CLEAR SEARCH
   handleClickClear = () => {
-    console.log("yo what it do my g")
     this.setState({
       gifsArray: [],
     })
   }
-
 
   // RENDER
   render() {
@@ -158,8 +120,6 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;
 
