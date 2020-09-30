@@ -21,7 +21,7 @@ class App extends Component {
       method: "GET",
       responseType: "json",
       params: {
-        q: "cats",
+        q: "juno",
         api_key: "4aF1GacjvE51Uj4zvZN9CCLvBmHIO0Vy",
         limit: 18,
         lang: "en"
@@ -94,9 +94,9 @@ class App extends Component {
           <div className="gifContainer">
             {this.state.gifsArray.map((gifs) => {
               return (
-                <div className="gif">
+                <div key={gifs.id} className="gif">
                   <h2>{gifs.title}</h2>
-                  <img key={gifs.id} src={gifs.images.fixed_height.url} alt={gifs.title} />
+                  <img src={gifs.images.fixed_height.url} alt={gifs.title} />
                 </div>
               );
             })}
