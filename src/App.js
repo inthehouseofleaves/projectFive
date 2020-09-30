@@ -66,7 +66,11 @@ class App extends Component {
     this.getGif();
     this.setState({
       userInput: "",
-    })
+    });
+    // ERROR HANDLING: NO INPUT
+    if (this.state.userInput === "") {
+      alert("Time is a construct; there's no need to rush. Please enter something.");
+    }
   }
 
   // CLEAR SEARCH
@@ -86,7 +90,7 @@ class App extends Component {
           <div className="searchBar">
             <form action="submit" className="submit">
               <label sr-only="search" htmlFor="search"></label>
-              <input onChange={this.queryString} value={this.state.userInput} type="text" className="search" placeholder="i.e. Cats" />
+              <input onSubmit={this.handleError} onChange={this.queryString} value={this.state.userInput} type="text" className="search" placeholder="i.e. Cats"/>
               <button onClick={this.handleSubmit} sr-only="submit" className="submit">Submit</button>
             </form>
           </div>
@@ -96,7 +100,7 @@ class App extends Component {
               return (
                 <div key={gifs.id} className="gif">
                   <h2>{gifs.title}</h2>
-                  <img src={gifs.images.fixed_height.url} alt={gifs.title} />
+                  <img src={gifs.images.fixed_height.url} alt={gifs.title}/>
                 </div>
               );
             })}
@@ -107,9 +111,11 @@ class App extends Component {
           </div>
           {/* FOOTER */}
           <footer>
-            <p><a href="https://junocollege.com/">Created at Juno College</a></p>
+            <p>
+              <a href="https://junocollege.com/" target="blank">Created at Juno College</a>
+            </p>
           </footer>
-        </div> 
+        </div>
       </div>
     );
   }
